@@ -1,11 +1,16 @@
 import React from "react";
+import {Photo} from "@frontendmasters/pet";
+
+interface IProps {
+  media: Photo[] 
+}
 
 class Carousel extends React.Component {
-  state = {
+  public state = {
     photos: [],
     active: 0
   };
-  static getDerivedStateFromProps({ media }) {
+  public static getDerivedStateFromProps({ media }) {
     let photos = ["http://placecorgi.com/600/600"];
 
     if (media.length) {
@@ -14,12 +19,12 @@ class Carousel extends React.Component {
 
     return { photos };
   }
-  handleIndexClick = event => {
+  public handleIndexClick = ({event) => {
     this.setState({
       active: +event.target.dataset.index
     });
   };
-  render() {
+  public render() {
     const { photos, active } = this.state;
     return (
       <div className="carousel">
